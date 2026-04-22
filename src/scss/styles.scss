@@ -1,0 +1,94 @@
+@use "normalize.css";
+@use "fonts.scss";
+
+// ---------------------------------------------------------------------- //
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+a,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+input,
+input:focus,
+button {
+  outline: none;
+  background: transparent;
+}
+
+div,
+p,
+form,
+input,
+a,
+span,
+button,
+textarea {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+a,
+a:hover,
+button,
+button:hover {
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+svg {
+  fill: currentColor;
+}
+
+label {
+  margin: 0;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+}
+
+// ---------------------------------------------------------------------- //
+
+:root {
+  --bg-color: #131619;
+  --bg-color-second: #000;
+  --text-color: #C4C4C4;
+}
+
+body {
+  font-family: "Heebo", sans-serif;
+  color: var(--text-color);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.3rem);
+  background: var(--bg-color);
+}

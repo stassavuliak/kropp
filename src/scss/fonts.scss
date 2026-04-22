@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Heebo";
+  src: url("../fonts/Heebo-Light.eot"); /* IE9 Compat Modes */
+  src:
+    url("../fonts/Heebo-Light.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/Heebo-Light.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/Heebo-Light.woff") format("woff"),
+    /* Pretty Modern Browsers */ url("../fonts/Heebo-Light.ttf") format("truetype"),
+    /* Safari, Android, iOS */ url("../fonts/Heebo-Light.svg#Heebo-Light") format("svg"); /* Legacy iOS */
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Heebo";
+  src: url("../fonts/Heebo-Bold.eot"); /* IE9 Compat Modes */
+  src:
+    url("../fonts/Heebo-Bold.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/Heebo-Bold.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/Heebo-Bold.woff") format("woff"),
+    /* Pretty Modern Browsers */ url("../fonts/Heebo-Bold.ttf") format("truetype"),
+    /* Safari, Android, iOS */ url("../fonts/Heebo-Bold.svg#Heebo-Bold") format("svg"); /* Legacy iOS */
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Yantramanav";
+  src: url("../fonts/Yantramanav-Bold.eot"); /* IE9 Compat Modes */
+  src:
+    url("../fonts/Yantramanav-Bold.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/Yantramanav-Bold.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("../fonts/Yantramanav-Bold.woff") format("woff"),
+    /* Pretty Modern Browsers */ url("../fonts/Yantramanav-Bold.ttf") format("truetype"),
+    /* Safari, Android, iOS */ url("../fonts/Yantramanav-Bold.svg#Yantramanav-Bold") format("svg"); /* Legacy iOS */
+  font-weight: 700;
+}
