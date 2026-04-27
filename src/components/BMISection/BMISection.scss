@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
+
+// ─── Variables ───────────────────────────────────────────────
+$bg-main:        #111111;
+$bg-circle:      #0a0a0a;
+$bg-dropdown:    #1a1a1a;
+$color-white:    #ffffff;
+$border-subtle:  rgba(255, 255, 255, 0.12);
+$border-faint:   rgba(255, 255, 255, 0.06);
+$border-btn:     rgba(255, 255, 255, 0.25);
+$text-muted:     rgba(255, 255, 255, 0.35);
+$text-dim:       rgba(255, 255, 255, 0.4);
+$text-mid:       rgba(255, 255, 255, 0.6);
+$text-ghost:     rgba(255, 255, 255, 0.04);
+$font-family:    'DM Sans', 'Helvetica Neue', sans-serif;
+
+// ─── Status colors ────────────────────────────────────────────
+$color-underweight: #60a5fa;
+$color-healthy:     #4ade80;
+$color-overweight:  #facc15;
+$color-obese:       #f87171;
+
+// ─── Section ─────────────────────────────────────────────────
+.bmi-section {
+  background:      $bg-main;
+  min-height:      100vh;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-family:     $font-family;
+  padding:         60px 40px;
+}
+
+.bmi-section__inner {
+  max-width:  1200px;
+  width:      100%;
+  display:    flex;
+  align-items: center;
+  gap:         80px;
+  flex-wrap:   wrap;
+}
+
+// ─── Left column ─────────────────────────────────────────────
+.bmi-form {
+  flex: 1 1 420px;
+  min-width: 320px;
+}
+
+// Title
+.bmi-form__title-wrap {
+  position:      relative;
+  margin-bottom: 24px;
+}
+
+.bmi-form__title-ghost {
+  position:    absolute;
+  top:         -10px;
+  left:        -4px;
+  font-size:   80px;
+  font-weight: 700;
+  color:       $text-ghost;
+  line-height: 1;
+  letter-spacing: -4px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.bmi-form__title {
+  margin:          0;
+  font-size:       clamp(28px, 4vw, 44px);
+  font-weight:     600;
+  color:           $color-white;
+  letter-spacing:  -0.03em;
+  line-height:     1.1;
+  position:        relative;
+  padding-top:     8px;
+
+  &-plus {
+    color:        rgba(255, 255, 255, 0.3);
+    margin-right: 6px;
+  }
+}
+
+.bmi-form__desc {
+  color:         $text-muted;
+  font-size:     14px;
+  line-height:   1.6;
+  margin-bottom: 36px;
+  max-width:     380px;
+}
+
+// Grid
+.bmi-form__grid {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   12px;
+  margin-bottom:         12px;
+}
+
+// Shared input base
+%input-base {
+  background:     transparent;
+  border:         1px solid $border-subtle;
+  border-radius:  999px;
+  padding:        16px 24px;
+  color:          $color-white;
+  font-size:      15px;
+  outline:        none;
+  width:          100%;
+  box-sizing:     border-box;
+  font-family:    inherit;
+  letter-spacing: 0.01em;
+  transition:     border-color 0.2s;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.bmi-form__input {
+  @extend %input-base;
+  // remove number arrows
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &[type=number] { -moz-appearance: textfield; }
+}
+
+// ─── Dropdown ─────────────────────────────────────────────────
+.bmi-dropdown {
+  position: relative;
+
+  &--activity {
+    margin-bottom: 32px;
+  }
+}
+
+.bmi-dropdown__trigger {
+  @extend %input-base;
+  cursor:          pointer;
+  display:         flex;
+  justify-content: space-between;
+  align-items:     center;
+}
+
+.bmi-dropdown__placeholder {
+  color: $text-muted;
+}
+
+.bmi-dropdown__value {
+  color: $color-white;
+}
+
+.bmi-dropdown__arrow {
+  color:     rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+}
+
+.bmi-dropdown__menu {
+  position:     absolute;
+  top:          calc(100% + 6px);
+  left:         0;
+  right:        0;
+  background:   $bg-dropdown;
+  border:       1px solid $border-subtle;
+  border-radius: 16px;
+  overflow:     hidden;
+  z-index:      10;
+}
+
+.bmi-dropdown__item {
+  padding:     14px 24px;
+  color:       $color-white;
+  cursor:      pointer;
+  font-size:   14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition:  background 0.15s;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+// ─── Calculate button ─────────────────────────────────────────
+.bmi-form__btn {
+  display:        flex;
+  align-items:    center;
+  gap:            12px;
+  background:     transparent;
+  border:         1px solid $border-btn;
+  border-radius:  999px;
+  padding:        14px 28px;
+  color:          $color-white;
+  font-size:      13px;
+  font-weight:    600;
+  letter-spacing: 0.12em;
+  cursor:         pointer;
+  text-transform: uppercase;
+  font-family:    inherit;
+  transition:     background 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.bmi-form__btn-icon {
+  width:           32px;
+  height:          32px;
+  border-radius:   50%;
+  border:          1px solid rgba(255, 255, 255, 0.3);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       16px;
+}
+
+// ─── Result card ──────────────────────────────────────────────
+.bmi-result {
+  margin-top:    28px;
+  background:    rgba(255, 255, 255, 0.04);
+  border:        1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding:       24px 28px;
+  display:       flex;
+  gap:           32px;
+  flex-wrap:     wrap;
+}
+
+.bmi-result__item {}
+
+.bmi-result__label {
+  color:          $text-dim;
+  font-size:      11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom:  6px;
+}
+
+.bmi-result__value {
+  font-size:   32px;
+  font-weight: 600;
+  color:       $color-white;
+
+  &--colored {
+    // color set inline via CSS variable
+    color: var(--status-color);
+  }
+}
+
+.bmi-result__sub {
+  font-size:  13px;
+  margin-top: 2px;
+  color:      $text-dim;
+
+  &--colored {
+    color: var(--status-color);
+  }
+}
+
+// ─── Right column — circle ────────────────────────────────────
+.bmi-circle-wrap {
+  flex:            0 0 auto;
+  display:         flex;
+  justify-content: center;
+}
+
+.bmi-circle {
+  width:           clamp(300px, 38vw, 460px);
+  height:          clamp(300px, 38vw, 460px);
+  border-radius:   50%;
+  background:      $bg-circle;
+  border:          1px solid $border-faint;
+  display:         flex;
+  flex-direction:  column;
+  justify-content: center;
+  padding:         48px;
+  box-sizing:      border-box;
+}
+
+.bmi-table__header {
+  display:       flex;
+  gap:           24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 4px;
+}
+
+.bmi-table__head {
+  flex:           1;
+  color:          $color-white;
+  font-weight:    600;
+  font-size:      13px;
+  letter-spacing: 0.02em;
+}
+
+.bmi-table__row {
+  display:       flex;
+  gap:           24px;
+  padding:       14px 0;
+  border-bottom: 1px solid $border-faint;
+  transition:    opacity 0.3s;
+
+  &--active {
+    opacity: 1 !important;
+  }
+
+  &--dimmed {
+    opacity: 0.4;
+  }
+}
+
+.bmi-table__range {
+  flex:      1;
+  color:     $text-mid;
+  font-size: 14px;
+}
+
+.bmi-table__status {
+  flex:      1;
+  color:     $text-mid;
+  font-size: 14px;
+
+  &--active {
+    font-weight: 600;
+    color: var(--status-color);
+  }
+}
+
+.bmi-circle__footer {
+  margin-top:  20px;
+  color:       rgba(255, 255, 255, 0.3);
+  font-size:   12px;
+  line-height: 1.8;
+
+  strong {
+    color:       $color-white;
+    font-weight: 600;
+  }
+}
